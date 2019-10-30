@@ -1,27 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { MultiListState } from '../multi-list-store/multi-lists.state';
 import { ToDoList } from '../models/to-do-list';
 import { CreateList } from '../multi-list-store/multi-lists.actions';
+import {MatDialog } from '@angular/material/dialog';
+import { CreateNewListDialogComponent } from './create-new-list-dialog/create-new-list-dialog.component';
+
+export interface DialogData {
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-multi-list',
   templateUrl: './multi-list.component.html',
   styleUrls: ['./multi-list.component.scss']
 })
-export class MultiListComponent implements OnInit {
+export class MultiListComponent{
   
   @Select(MultiListState) multiListState$: Observable<ToDoList[]>;
-  constructor(private store: Store) {
+
+  constructor(private store: Store, public dialog: MatDialog) {
+    this.multiListState$.subscribe(x=>console.log(x));
   }
 
-  ngOnInit() {
-  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CreateNewListDialogComponent, {
+      width: '250px',
+      data: {name: null, description: null}
+    });
 
-  createNewList() {
-    this.store.dispatch(new CreateList(
-      {name: "test2", description: "desc2", dueDate: new Date()}
-    ))
+    dialogRef.afterClosed().subscribe((result: DialogData) => {
+      this.store.dispatch(new CreateList(
+        {name: result.name, description: result.description}
+      ))
+    });
   }
 }
+

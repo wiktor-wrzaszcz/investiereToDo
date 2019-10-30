@@ -1,7 +1,6 @@
 <mat-card class="card-container">    
     <mat-card-header>
       <mat-card-title>{{toDoList.name}}
-      <!-- Name: {{toDoList.name}} Description: {{toDoList.description}} Id: {{toDoList.id}} -->
       </mat-card-title>
       <mat-card-subtitle class="subtitle-margin">{{toDoList.description}}</mat-card-subtitle>          
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu" class="button-right">
@@ -9,42 +8,17 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
+          <mat-icon>navigate_next</mat-icon>
           <span>Open</span>
         </button>
-        <button mat-menu-item disabled>
-          <mat-icon>voicemail</mat-icon>
+        <button mat-menu-item>
+          <mat-icon>build</mat-icon>
           <span>Edit</span>
         </button>
         <button mat-menu-item>
-          <mat-icon>notifications_off</mat-icon>
+          <mat-icon>delete</mat-icon>
           <span>Remove</span>
         </button>
       </mat-menu>
-        <!-- <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
     </mat-card-header>
-  <!-- <div class="details">
-    <mat-card-title>{{toDoList.name}}
-    Name: {{toDoList.name}} Description: {{toDoList.description}} Id: {{toDoList.id}}
-    </mat-card-title>
-    <mat-card-subtitle>{{toDoList.description}}</mat-card-subtitle>
-  </div>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu" class="v-center">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Open</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Edit</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Remove</span>
-    </button> -->
 </mat-card>

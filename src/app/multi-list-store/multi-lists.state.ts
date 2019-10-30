@@ -11,8 +11,8 @@ export class MultiListStateModel {
   name: 'multiLists',
   defaults: {
     items: [
-      {id: 0, name: "test1", description: "desc1", dueDate: new Date(), isResolved: false},
-      {id: 1, name: "test2", description: "desc2", dueDate: new Date(), isResolved: true}
+      {id: 0, name: "test1", description: "desc1"},
+      {id: 1, name: "test2", description: "desc2"}
     ]
   }
 })
@@ -21,7 +21,7 @@ export class MultiListState {
   add(ctx: StateContext<MultiListStateModel>, action: CreateList) {
     const state = ctx.getState();
     // Code below shouldn't exist - we should communicate with backend with gets and posts.
-    const newList = {id: state.items.length, name: action.payload.name, description: action.payload.description, dueDate: action.payload.dueDate, isResolved: false};
+    const newList = {id: state.items.length, name: action.payload.name, description: action.payload.description};
     ctx.setState({ items: [ ...state.items, newList] });
   }
 }

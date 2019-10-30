@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,13 +12,15 @@ import { NgxsModule } from '@ngxs/store';
 import { MultiListState } from './multi-list-store/multi-lists.state';
 import { AssigneeComponent } from './assignee/assignee.component';
 import { SingleListCardComponent } from './multi-list/single-list-card/single-list-card.component';
+import { CreateNewListDialogComponent } from './multi-list/create-new-list-dialog/create-new-list-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MultiListComponent,
     SingleListCardComponent,
-    AssigneeComponent
+    AssigneeComponent,
+    CreateNewListDialogComponent
   ],
   imports: [
     NgxsModule.forRoot([
@@ -25,9 +29,12 @@ import { SingleListCardComponent } from './multi-list/single-list-card/single-li
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialWrapperModule
+    MaterialWrapperModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateNewListDialogComponent]
 })
 export class AppModule { }

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Create new list</h1>
+<div mat-dialog-content [formGroup]="form">
+    <p>Provide name for new list</p>
+    <mat-form-field>
+      <input matInput formControlName="name" >
+    </mat-form-field>
+    <p>Provide description for new list</p>
+    <mat-form-field>
+      <input matInput formControlName="description" >
+    </mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="save(data)" [disabled]="!form.valid" cdkFocusInitial>Create</button>
+</div>
