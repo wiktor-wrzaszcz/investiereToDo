@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { MultiListState } from '../multi-list-store/multi-list.state';
 import { map, debounceTime } from 'rxjs/operators';
-import { ToDoList } from '../models/to-do-list';
 import { MatDialog } from '@angular/material';
 import { CreateEditTodoDialogComponent, TodoItemCreateEditDialogData } from './create-edit-todo-dialog/create-edit-todo-dialog.component';
-import { AddToDoItem, GetItemsByListId } from '../todos-store/todos.actions';
-import { TodosState } from '../todos-store/todos.state';
-import { ToDoItem } from '../models/to-do-item';
+import { MultiListState } from '../multi-list/multi-list-store/multi-list.state';
+import { GetItemsByListId, AddToDoItem } from './todos-store/todos.actions';
+import { TodosState } from './todos-store/todos.state';
+import { ToDoList } from '../shared/models/to-do-list';
+import { ToDoItem } from '../shared/models/to-do-item';
 @Component({
-  selector: 'app-single-list',
-  templateUrl: './single-list.component.html',
-  styleUrls: ['./single-list.component.scss']
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss']
 })
-export class SingleListComponent implements OnInit {
+export class TodoListComponent implements OnInit {
 
   public list: ToDoList;
   public todos: ToDoItem[];

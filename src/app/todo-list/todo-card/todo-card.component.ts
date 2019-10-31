@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToDoItem } from '../../models/to-do-item';
 import { MatDialog } from '@angular/material';
 import { CreateEditTodoDialogComponent, TodoItemCreateEditDialogData } from '../create-edit-todo-dialog/create-edit-todo-dialog.component';
-import { EditToDoItem, RemoveToDoItem } from '../../todos-store/todos.actions';
-import { Store } from '../../../../node_modules/@ngxs/store';
-import { EditCreateTodoData } from '../../todos-store/models/edit-create-todo-data';
+import { Store } from '@ngxs/store';
+import { EditCreateTodoData } from '../todos-store/models/edit-create-todo-data';
+import { EditToDoItem, RemoveToDoItem } from '../todos-store/todos.actions';
+import { ToDoItem } from '../../shared/models/to-do-item';
 
 @Component({
   selector: 'app-todo-card',

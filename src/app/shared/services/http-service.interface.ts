@@ -1,4 +1,4 @@
-export interface HttpService<T>{  
+export interface HttpService<T> {
   get();
   getById(id: number);
   post(object: T);

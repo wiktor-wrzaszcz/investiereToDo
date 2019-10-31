@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { MultiListState } from '../multi-list-store/multi-list.state';
-import { ToDoList } from '../models/to-do-list';
-import { CreateList } from '../multi-list-store/multi-list.actions';
-import {MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CreateNewListDialogComponent } from './create-new-list-dialog/create-new-list-dialog.component';
+import { MultiListState } from './multi-list-store/multi-list.state';
+import { CreateList } from './multi-list-store/multi-list.actions';
+import { ToDoList } from '../shared/models/to-do-list';
 
 export interface MultiListCreateDialogData {
   name: string;

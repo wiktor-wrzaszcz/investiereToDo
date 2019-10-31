@@ -1,6 +1,5 @@
 import { EditCreateTodoData } from './models/edit-create-todo-data';
-import { ToDoItem } from '../models/to-do-item';
-
+import { ToDoItem } from '../../shared/models/to-do-item';
 // Actions
 export class AddToDoItem {
   static readonly type = '[Todos] Add item';

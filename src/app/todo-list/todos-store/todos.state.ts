@@ -1,10 +1,9 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { AddToDoItem, ItemCreated, GetItems, ItemsFetched, SingleItemFetched,
   GetItemsByListId, EditToDoItem, ItemEdited, RemoveToDoItem, ItemRemoved } from './todos.actions';
-import { TodoService } from '../services/todo.service';
-import { ToDoItem } from '../models/to-do-item';
 import { EditCreateTodoData } from './models/edit-create-todo-data';
-
+import { ToDoItem } from '../../shared/models/to-do-item';
+import { TodoService } from '../../shared/services/todo.service';
 export class TodosStateModel {
   public items: ToDoItem[];
 }

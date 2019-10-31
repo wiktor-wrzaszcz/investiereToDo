@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Assignee } from '../../models/assignee';
-import { Store, Select } from '../../../../node_modules/@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { UsersState } from '../../users-store/users.state';
-import { Observable } from '../../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
+import { Assignee } from '../../shared/models/assignee';
 
 export interface TodoItemCreateEditDialogData {
   description: string;

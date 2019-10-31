@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ToDoList } from './models/to-do-list';
 import { BehaviorSubject } from 'rxjs';
-import { ToDoItem } from './models/to-do-item';
+import { ToDoList } from './shared/models/to-do-list';
+import { ToDoItem } from './shared/models/to-do-item';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +21,6 @@ export class BackendMockUpService {
       {id: 2, ownerListId: 1, description: 'testDesc',
       assignee: {name: 'Mrs Squirrel', pictureUrl: 'assets/squirrel.jpg'}, dueDate: new Date(), isResolved: false }
     ]);
+
+    // Users should actually be here and communicate with store through service, but there's no point in copy-paste at this stage
 }

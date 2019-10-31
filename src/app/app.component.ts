@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '../../node_modules/@ngxs/store';
-import { GetLists } from './multi-list-store/multi-list.actions';
+import { Store } from '@ngxs/store';
+import { GetLists } from './multi-list/multi-list-store/multi-list.actions';
 
 @Component({
   selector: 'app-root',

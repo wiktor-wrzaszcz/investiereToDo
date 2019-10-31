@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ToDoList } from '../../models/to-do-list';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { RemoveList } from '../../multi-list-store/multi-list.actions';
+import { RemoveList } from '../multi-list-store/multi-list.actions';
+import { ToDoList } from '../../shared/models/to-do-list';
 
 @Component({
   selector: 'app-list-card',

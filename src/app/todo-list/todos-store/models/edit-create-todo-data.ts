@@ -1,4 +1,5 @@
-import { Assignee } from '../../models/assignee';
+import { Assignee } from '../../../shared/models/assignee';
+
 
 export class EditCreateTodoData {
   constructor(public ownerListId: number,

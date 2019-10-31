@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ToDoItem } from '../models/to-do-item';
 import { HttpService } from './http-service.interface';
-import { BackendMockUpService } from '../backend-mock-up.service';
 import { of, Observable } from 'rxjs';
-import { EditCreateTodoData } from '../todos-store/models/edit-create-todo-data';
+import { BackendMockUpService } from '../../backend-mock-up.service';
+import { EditCreateTodoData } from '../../todo-list/todos-store/models/edit-create-todo-data';
 
 @Injectable({
   providedIn: 'root'

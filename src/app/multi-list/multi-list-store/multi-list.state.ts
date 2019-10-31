@@ -1,8 +1,7 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { CreateList, RemoveList, ListCreated, GetLists, ListsFetched } from './multi-list.actions';
-import { ToDoList } from '../models/to-do-list';
-import { ListService } from '../services/list.service';
-
+import { ListService } from '../../shared/services/list.service';
+import { ToDoList } from '../../shared/models/to-do-list';
 export class MultiListStateModel {
   public items: ToDoList[];
 }

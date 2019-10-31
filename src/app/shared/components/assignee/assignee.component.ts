@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Assignee } from '../models/assignee';
+import { Assignee } from '../../models/assignee';
 
 @Component({
   selector: 'app-assignee',

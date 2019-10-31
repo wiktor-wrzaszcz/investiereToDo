@@ -1,5 +1,5 @@
 import { EditCreateListData } from './models/edit-create-list-data';
-import { ToDoList } from '../models/to-do-list';
+import { ToDoList } from '../../shared/models/to-do-list';
 
 // Actions
 export class CreateList {

@@ -9,15 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MultiListComponent } from './multi-list/multi-list.component';
 import { MaterialWrapperModule } from './material-wrapper/material-wrapper.module';
 import { NgxsModule } from '@ngxs/store';
-import { MultiListState } from './multi-list-store/multi-list.state';
-import { AssigneeComponent } from './assignee/assignee.component';
 import { CreateNewListDialogComponent } from './multi-list/create-new-list-dialog/create-new-list-dialog.component';
-import { SingleListComponent } from './single-list/single-list.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 import { ListCardComponent } from './multi-list/list-card/list-card.component';
-import { CreateEditTodoDialogComponent } from './single-list/create-edit-todo-dialog/create-edit-todo-dialog.component';
-import { TodoCardComponent } from './single-list/todo-card/todo-card.component';
-import { TodosState } from './todos-store/todos.state';
+import { CreateEditTodoDialogComponent } from './todo-list/create-edit-todo-dialog/create-edit-todo-dialog.component';
+import { TodoCardComponent } from './todo-list/todo-card/todo-card.component';
 import { UsersState } from './users-store/users.state';
+import { TodosState } from './todo-list/todos-store/todos.state';
+import { MultiListState } from './multi-list/multi-list-store/multi-list.state';
+import { AssigneeComponent } from './shared/components/assignee/assignee.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { UsersState } from './users-store/users.state';
     ListCardComponent,
     AssigneeComponent,
     CreateNewListDialogComponent,
-    SingleListComponent,
+    TodoListComponent,
     CreateEditTodoDialogComponent,
     TodoCardComponent
   ],
