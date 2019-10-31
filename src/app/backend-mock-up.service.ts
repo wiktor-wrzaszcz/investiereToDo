@@ -9,16 +9,16 @@ import { ToDoItem } from './shared/models/to-do-item';
 export class BackendMockUpService {
   public listCollection: BehaviorSubject<ToDoList[]> = new BehaviorSubject<ToDoList[]>(
     [
-      {id: 0, name: 'test1', description: 'desc1', },
-      {id: 1, name: 'test2', description: 'desc2'}
+      {id: 0, name: 'List number Uno', description: 'Description of list number Uno', },
+      {id: 1, name: 'List number Secundo', description: 'Description of list number Secundo'}
     ]);
   public itemCollection: BehaviorSubject<ToDoItem[]> = new BehaviorSubject<ToDoItem[]>(
     [
-      {id: 0, ownerListId: 0, description: 'testDesc',
+      {id: 0, ownerListId: 0, description: 'Clean lake out of bread',
       assignee: {name: 'Mr Duck', pictureUrl: 'assets/duck.jpg'}, dueDate: new Date(), isResolved: false },
-      {id: 1, ownerListId: 0, description: 'testDesc2',
+      {id: 1, ownerListId: 0, description: 'Impersonate duckling',
       assignee: {name: 'Mr Duck Disguised', pictureUrl: 'assets/squirrel.jpg'}, dueDate: new Date(), isResolved: false },
-      {id: 2, ownerListId: 1, description: 'testDesc',
+      {id: 2, ownerListId: 1, description: 'Go nuts',
       assignee: {name: 'Mrs Squirrel', pictureUrl: 'assets/squirrel.jpg'}, dueDate: new Date(), isResolved: false }
     ]);
 
