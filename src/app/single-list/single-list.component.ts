@@ -43,7 +43,7 @@ export class SingleListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: TodoItemCreateEditDialogData) => {
       if (result) {
-        this.store.dispatch(new AddToDoItem({...result, ownerListId: this.list.id}));
+        this.store.dispatch(new AddToDoItem({...result, ownerListId: this.list.id, isResolved: false}));
       }
     });
   }

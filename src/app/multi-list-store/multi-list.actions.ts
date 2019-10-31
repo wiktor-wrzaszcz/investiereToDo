@@ -12,15 +12,19 @@ export class RemoveList {
   constructor(public id: number) { }
 }
 
-// export class AddTodoToList {
-//   static readonly type = '[MultiList] Add Todo to list';
-//   constructor(public toDoItem: ToDoItem) { }
-// }
-
+export class GetLists {
+  static readonly type = '[MultiList] Get lists';
+  constructor() { }
+}
 
 // Changes
 
 export class ListCreated {
   static readonly type = '[MultiList] List created';
   constructor(public payload: ToDoList) { }
+}
+
+export class ListsFetched {
+  static readonly type = '[MultiList] Lists fetched';
+  constructor(public payload: ToDoList[]) { }
 }

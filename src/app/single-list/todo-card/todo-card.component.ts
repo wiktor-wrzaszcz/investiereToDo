@@ -15,9 +15,20 @@ export class TodoCardComponent implements OnInit {
   @Input()
   toDoItem: ToDoItem;
 
+  checked = false;
+
   constructor(public dialog: MatDialog, public store: Store) { }
 
   ngOnInit() {
+    this.checked = this.toDoItem.isResolved;
+  }
+
+  onCheckboxChange($event) {
+    // i know this one could be more elegant -.-
+    const toDoItemWithChangedValue: any = {};
+    Object.assign(toDoItemWithChangedValue, this.toDoItem);
+    toDoItemWithChangedValue.isResolved = $event;
+    this.store.dispatch(new EditToDoItem(this.toDoItem, toDoItemWithChangedValue as EditCreateTodoData));
   }
 
   edit() {

@@ -3,6 +3,7 @@ import { AddToDoItem, ItemCreated, GetItems, ItemsFetched, SingleItemFetched,
   GetItemsByListId, EditToDoItem, ItemEdited, RemoveToDoItem, ItemRemoved } from './todos.actions';
 import { TodoService } from '../services/todo.service';
 import { ToDoItem } from '../models/to-do-item';
+import { EditCreateTodoData } from './models/edit-create-todo-data';
 
 export class TodosStateModel {
   public items: ToDoItem[];
@@ -31,9 +32,7 @@ export class TodosState {
 
   @Action(EditToDoItem)
   editToDoItem(ctx: StateContext<TodosStateModel>, action: EditToDoItem) {
-    if (action.toDoItem.assignee !== action.changes.assignee
-    || action.toDoItem.dueDate !== action.changes.dueDate
-    || action.toDoItem.description !== action.changes.description) {
+    if (this.validateEdit(action.toDoItem, action.changes)) {
       this.todoHttpSerivce.put(
         {id: action.toDoItem.id, isResolved: action.toDoItem.isResolved, ownerListId: action.toDoItem.ownerListId, ...action.changes}
       ).subscribe(x => ctx.dispatch(new ItemEdited(x)));
@@ -91,5 +90,12 @@ export class TodosState {
     const state = ctx.getState();
     state.items.splice(state.items.findIndex(x => x.id === action.id), 1);
     ctx.setState({items: state.items});
+  }
+
+  validateEdit(toDoItem: ToDoItem, changes: EditCreateTodoData) {
+    return toDoItem.assignee !== changes.assignee
+    || toDoItem.dueDate !== changes.dueDate
+    || toDoItem.description !== changes.description
+    || toDoItem.isResolved !== changes.isResolved;
   }
 }

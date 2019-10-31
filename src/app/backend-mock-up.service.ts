@@ -14,21 +14,11 @@ export class BackendMockUpService {
     ]);
   public itemCollection: BehaviorSubject<ToDoItem[]> = new BehaviorSubject<ToDoItem[]>(
     [
-      {id: 0, ownerListId: 0, description: 'testDesc', assignee: null, dueDate: new Date(), isResolved: false },
-      {id: 1, ownerListId: 0, description: 'testDesc2', assignee: null, dueDate: new Date(), isResolved: false },
-      {id: 2, ownerListId: 1, description: 'testDesc', assignee: null, dueDate: new Date(), isResolved: false }
+      {id: 0, ownerListId: 0, description: 'testDesc',
+      assignee: {name: 'Mr Duck', pictureUrl: 'assets/duck.jpg'}, dueDate: new Date(), isResolved: false },
+      {id: 1, ownerListId: 0, description: 'testDesc2',
+      assignee: {name: 'Mr Duck Disguised', pictureUrl: 'assets/squirrel.jpg'}, dueDate: new Date(), isResolved: false },
+      {id: 2, ownerListId: 1, description: 'testDesc',
+      assignee: {name: 'Mrs Squirrel', pictureUrl: 'assets/squirrel.jpg'}, dueDate: new Date(), isResolved: false }
     ]);
-
-  constructor() {
-
-  }
 }
-
-// toDoItems: [
-  // {description: "testDesc", assignee: null, dueDate: new Date(), isResolved: false, ownerListId: 0},
-  // {description: "testDesc2", assignee: null, dueDate: new Date(), isResolved: false, ownerListId: 0}
-// ]
-
-// toDoItems: [
-//   {description: "testDesc", assignee: null, dueDate: new Date(), isResolved: false, ownerListId: 1}
-// ]
