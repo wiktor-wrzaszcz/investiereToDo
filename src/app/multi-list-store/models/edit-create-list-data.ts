@@ -1,3 +1,3 @@
-export class CreateListData {
+export class EditCreateListData {
   constructor(public name: string, public description: string){}
 }

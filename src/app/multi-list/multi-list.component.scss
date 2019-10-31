@@ -4,12 +4,14 @@
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 20px;
   background: #eee;
 }
 
 .header {
   display: flex;
-  
+  margin-bottom: 10px;
+
   .header-title {
     font-size: 24px;
     font-weight: 500;

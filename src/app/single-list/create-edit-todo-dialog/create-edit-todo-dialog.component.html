@@ -1,17 +1,24 @@
-<h1 mat-dialog-title>Create new list</h1>
+<h1 mat-dialog-title>Create new TODO</h1>
 <div mat-dialog-content [formGroup]="form">
-    <p>Provide name for new list</p>
+    <p>Assignee</p>
     <mat-form-field>
-      <input matInput formControlName="name" >
+      <input matInput formControlName="assignee" >
     </mat-form-field>
-    <div *ngIf="form.controls['name'].errors" class="error-text">
+    <div *ngIf="form.controls['assignee'].errors" class="error-text">
       Provide at least 3 characters
     </div>
-    <p>Provide description for new list</p>
+    <p>Description</p>
     <mat-form-field>
       <input matInput formControlName="description">
     </mat-form-field>
     <div *ngIf="form.controls['description'].errors" class="error-text">
+      Provide at least 3 characters
+    </div>
+    <p>DueDate</p>
+    <mat-form-field>
+      <input matInput formControlName="dueDate">
+    </mat-form-field>
+    <div *ngIf="form.controls['dueDate'].errors" class="error-text">
       Provide at least 3 characters
     </div>
 <div mat-dialog-actions>

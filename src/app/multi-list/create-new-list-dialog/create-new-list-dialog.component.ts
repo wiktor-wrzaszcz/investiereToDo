@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '../../../../node_modules/@angular/material/dialog';
-import { DialogData } from '../multi-list.component';
-import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MultiListCreateDialogData } from '../multi-list.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-new-list-dialog',
@@ -16,7 +16,7 @@ export class CreateNewListDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateNewListDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: MultiListCreateDialogData) {
       this.description = data.description;
       this.name = data.name;
     }

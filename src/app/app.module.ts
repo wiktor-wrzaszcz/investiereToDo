@@ -9,22 +9,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MultiListComponent } from './multi-list/multi-list.component';
 import { MaterialWrapperModule } from './material-wrapper/material-wrapper.module';
 import { NgxsModule } from '@ngxs/store';
-import { MultiListState } from './multi-list-store/multi-lists.state';
+import { MultiListState } from './multi-list-store/multi-list.state';
 import { AssigneeComponent } from './assignee/assignee.component';
-import { SingleListCardComponent } from './multi-list/single-list-card/single-list-card.component';
 import { CreateNewListDialogComponent } from './multi-list/create-new-list-dialog/create-new-list-dialog.component';
+import { SingleListComponent } from './single-list/single-list.component';
+import { ListCardComponent } from './multi-list/list-card/list-card.component';
+import { CreateEditTodoDialogComponent } from './single-list/create-edit-todo-dialog/create-edit-todo-dialog.component';
+import { TodoCardComponent } from './single-list/todo-card/todo-card.component';
+import { TodosState } from './todos-store/todos.state';
 
 @NgModule({
   declarations: [
     AppComponent,
     MultiListComponent,
-    SingleListCardComponent,
+    ListCardComponent,
     AssigneeComponent,
-    CreateNewListDialogComponent
+    CreateNewListDialogComponent,
+    SingleListComponent,
+    CreateEditTodoDialogComponent,
+    TodoCardComponent
   ],
   imports: [
     NgxsModule.forRoot([
-      MultiListState
+      MultiListState,
+      TodosState
     ]),
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +43,6 @@ import { CreateNewListDialogComponent } from './multi-list/create-new-list-dialo
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CreateNewListDialogComponent]
+  entryComponents: [CreateNewListDialogComponent, CreateEditTodoDialogComponent]
 })
 export class AppModule { }

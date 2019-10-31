@@ -8,6 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -15,14 +18,17 @@ import { MatInputModule } from '@angular/material';
     CommonModule
   ],
   exports: [
-    MatSidenavModule,    
+    MatCheckboxModule,
+    MatSidenavModule,
     MatCardModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialWrapperModule { }

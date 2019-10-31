@@ -1,0 +1,24 @@
+<mat-card class="card-container">    
+    <mat-card-header>
+      <mat-card-title>{{toDoList.name}}
+      </mat-card-title>
+      <mat-card-subtitle class="subtitle">{{toDoList.description}}</mat-card-subtitle>          
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu" class="button-right">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="open()">
+          <mat-icon>navigate_next</mat-icon>
+          <span>Open</span>
+        </button>
+        <button mat-menu-item (click)="edit()">
+          <mat-icon>build</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="remove()">
+          <mat-icon>delete</mat-icon>
+          <span>Remove</span>
+        </button>
+      </mat-menu>
+    </mat-card-header>
+</mat-card>

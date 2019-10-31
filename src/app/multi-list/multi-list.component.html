@@ -1,5 +1,5 @@
 <mat-sidenav-container class="container">
-  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+  <mat-sidenav mode="side" closed>Filters</mat-sidenav>
   <mat-sidenav-content> 
     <div class="header">
       <span class="header-title">TODO Lists</span>
@@ -8,6 +8,6 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>   
-    <app-single-list-card *ngFor="let toDoList of (multiListState$ | async).items" [toDoList]="toDoList"></app-single-list-card>
+    <app-list-card *ngFor="let toDoList of (multiListState$ | async).items" [toDoList]="toDoList"></app-list-card>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,0 +1,24 @@
+<mat-progress-spinner class="spinner" mode="indeterminate" *ngIf="!list"></mat-progress-spinner>
+
+<div class="main-container" *ngIf="list">
+  <div class="header">      
+    <button mat-fab color="primary" routerLink="">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button> 
+    <div class="title-description-box">
+      <span class="header-title">{{list.name}}</span>
+      <span class="subtitle">{{list.description}}</span>
+    </div>
+    <span class="fill-remaining-space"></span>
+    <button mat-fab color="warn" (click)='openCreateDialog()'>
+      <mat-icon>add</mat-icon>
+    </button>    
+  </div>   
+
+  <mat-list *ngIf="todos">  
+    <app-todo-card *ngFor="let item of todos" [toDoItem]="item"></app-todo-card>
+    <!-- <mat-list-item *ngFor="let item of list.toDoItems"><app-todo-card [toDoItem]="item"></app-todo-card> </mat-list-item> -->
+  </mat-list>
+
+  <div *ngIf="!todos"><span>Add new TODOs</span></div>
+</div>

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { MultiListState } from '../multi-list-store/multi-lists.state';
+import { MultiListState } from '../multi-list-store/multi-list.state';
 import { ToDoList } from '../models/to-do-list';
-import { CreateList } from '../multi-list-store/multi-lists.actions';
+import { CreateList } from '../multi-list-store/multi-list.actions';
 import {MatDialog } from '@angular/material/dialog';
 import { CreateNewListDialogComponent } from './create-new-list-dialog/create-new-list-dialog.component';
 
-export interface DialogData {
+export interface MultiListCreateDialogData {
   name: string;
   description: string;
 }
@@ -31,10 +31,11 @@ export class MultiListComponent{
       data: {name: null, description: null}
     });
 
-    dialogRef.afterClosed().subscribe((result: DialogData) => {
+    dialogRef.afterClosed().subscribe((result: MultiListCreateDialogData) => {
+    if(result) {
       this.store.dispatch(new CreateList(
         {name: result.name, description: result.description}
-      ))
+      ))}
     });
   }
 }
