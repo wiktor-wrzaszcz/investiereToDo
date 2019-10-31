@@ -1,8 +1,13 @@
 <h1 mat-dialog-title>Create new TODO</h1>
 <div mat-dialog-content [formGroup]="form">
     <p>Assignee</p>
-    <mat-form-field>
-      <input matInput formControlName="assignee" >
+    <mat-form-field >
+      <input matInput [matAutocomplete]="auto" formControlName="assignee">    
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getOptionText">
+            <mat-option *ngFor="let assignee of assignees" [value]="assignee">
+              <app-assignee [assignee]=assignee></app-assignee>                       
+            </mat-option>
+          </mat-autocomplete>
     </mat-form-field>
     <div *ngIf="form.controls['assignee'].errors" class="error-text">
       Provide at least 3 characters
@@ -16,11 +21,10 @@
     </div>
     <p>DueDate</p>
     <mat-form-field>
-      <input matInput formControlName="dueDate">
+      <input matInput formControlName="dueDate" [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <div *ngIf="form.controls['dueDate'].errors" class="error-text">
-      Provide at least 3 characters
-    </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">Cancel</button>
   <button mat-button (click)="save(data)" [disabled]="!form.valid" >Create</button>

@@ -17,6 +17,7 @@ import { ListCardComponent } from './multi-list/list-card/list-card.component';
 import { CreateEditTodoDialogComponent } from './single-list/create-edit-todo-dialog/create-edit-todo-dialog.component';
 import { TodoCardComponent } from './single-list/todo-card/todo-card.component';
 import { TodosState } from './todos-store/todos.state';
+import { UsersState } from './users-store/users.state';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TodosState } from './todos-store/todos.state';
   imports: [
     NgxsModule.forRoot([
       MultiListState,
-      TodosState
+      TodosState,
+      UsersState
     ]),
     BrowserModule,
     AppRoutingModule,

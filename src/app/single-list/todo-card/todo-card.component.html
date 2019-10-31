@@ -1,11 +1,13 @@
 <mat-card class="card-container">    
     <mat-card-header>
-      <mat-card-title>{{toDoItem.description}}
+      <mat-card-title>Title: {{toDoItem.description}}
       </mat-card-title>
-      <mat-card-title>{{toDoItem.assignee}}
+      <mat-card-title>Due date: {{toDoItem.dueDate | date }}
       </mat-card-title>
-      <mat-card-title>{{toDoItem.dueDate}}
-      </mat-card-title>
+      <mat-card-title>Assignee: 
+        <app-assignee *ngIf="toDoItem.assignee" [assignee]="toDoItem.assignee"></app-assignee> 
+        <span *ngIf="!toDoItem.assignee">Nobody assigned :(</span> 
+      </mat-card-title> 
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu" class="button-right">
         <mat-icon>more_vert</mat-icon>
       </button>

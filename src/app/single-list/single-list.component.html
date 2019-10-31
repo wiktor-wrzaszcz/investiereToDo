@@ -1,7 +1,7 @@
 <mat-progress-spinner class="spinner" mode="indeterminate" *ngIf="!list"></mat-progress-spinner>
 
 <div class="main-container" *ngIf="list">
-  <div class="header">      
+  <div class="header" >   
     <button mat-fab color="primary" routerLink="">
       <mat-icon>keyboard_backspace</mat-icon>
     </button> 
@@ -17,7 +17,6 @@
 
   <mat-list *ngIf="todos">  
     <app-todo-card *ngFor="let item of todos" [toDoItem]="item"></app-todo-card>
-    <!-- <mat-list-item *ngFor="let item of list.toDoItems"><app-todo-card [toDoItem]="item"></app-todo-card> </mat-list-item> -->
   </mat-list>
 
   <div *ngIf="!todos"><span>Add new TODOs</span></div>

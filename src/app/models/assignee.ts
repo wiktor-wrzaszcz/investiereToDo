@@ -1,3 +1,3 @@
 export class Assignee {
-  constructor(public name: string, public pictureUrl: string){}
+  constructor(public name: string, public pictureUrl: string) {}
 }

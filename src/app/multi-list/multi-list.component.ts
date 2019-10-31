@@ -17,12 +17,12 @@ export interface MultiListCreateDialogData {
   templateUrl: './multi-list.component.html',
   styleUrls: ['./multi-list.component.scss']
 })
-export class MultiListComponent{
-  
+export class MultiListComponent {
+
   @Select(MultiListState) multiListState$: Observable<ToDoList[]>;
 
   constructor(private store: Store, public dialog: MatDialog) {
-    this.multiListState$.subscribe(x=>console.log(x));
+    this.multiListState$.subscribe(x => console.log(x));
   }
 
   openDialog(): void {
@@ -32,10 +32,10 @@ export class MultiListComponent{
     });
 
     dialogRef.afterClosed().subscribe((result: MultiListCreateDialogData) => {
-    if(result) {
+    if (result) {
       this.store.dispatch(new CreateList(
         {name: result.name, description: result.description}
-      ))}
+      )); }
     });
   }
 }

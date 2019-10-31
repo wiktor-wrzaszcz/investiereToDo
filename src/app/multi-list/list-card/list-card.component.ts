@@ -21,7 +21,7 @@ export class ListCardComponent implements OnInit {
   }
 
   open() {
-    this.router.navigate(["/toDoList/",this.toDoList.id]);
+    this.router.navigate(['/toDoList/', this.toDoList.id]);
     console.log(this.toDoList);
   }
   edit() {}

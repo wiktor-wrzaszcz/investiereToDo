@@ -11,13 +11,13 @@ export class MultiListStateModel {
   name: 'multiList',
   defaults: {
     items: [
-      {id: 0, name: "test1", description: "desc1", 
+      {id: 0, name: 'test1', description: 'desc1',
       // toDoItems: [
       //   {description: "testDesc", assignee: null, dueDate: new Date(), isResolved: false, ownerListId: 0},
       //   {description: "testDesc2", assignee: null, dueDate: new Date(), isResolved: false, ownerListId: 0}
       // ]
     },
-      {id: 1, name: "test2", description: "desc2", 
+      {id: 1, name: 'test2', description: 'desc2',
       // toDoItems: [
       //   {description: "testDesc", assignee: null, dueDate: new Date(), isResolved: false, ownerListId: 1}
       // ]
@@ -26,12 +26,12 @@ export class MultiListStateModel {
   }
 })
 export class MultiListState {
-  constructor(private readonly listHttpService: ListService){}
+  constructor(private readonly listHttpService: ListService) {}
 
-  @Selector() 
+  @Selector()
   static getIndexed(state: MultiListStateModel) {
-    return (index: number) => { 
-        return state.items.find(x=>x.id === index);
+    return (index: number) => {
+        return state.items.find(x => x.id === index);
     };
   }
 
@@ -41,18 +41,18 @@ export class MultiListState {
     // // Code below is not proper - we should try to rely on data from backend.
     // const items = [];
     // Object.assign(items, state.items);
-    // const highestIndex = items.sort((x,y) => x.id - y.id).pop().id;    
+    // const highestIndex = items.sort((x,y) => x.id - y.id).pop().id;
     // const newList = {id: highestIndex + 1, name: action.payload.name, description: action.payload.description, toDoItems: []};
 
-    this.listHttpService.post(action.payload).subscribe(x=> ctx.dispatch(new ListCreated(x)));
+    this.listHttpService.post(action.payload).subscribe(x => ctx.dispatch(new ListCreated(x)));
     // ctx.setState({ items: [ ...state.items, newList] });
   }
 
   @Action(RemoveList)
   removeList(ctx: StateContext<MultiListStateModel>, action: RemoveList) {
     const state = ctx.getState();
-    // Here should be Delete call     
-    state.items.splice(state.items.findIndex(x=>x.id === action.id),1);
+    // Here should be Delete call
+    state.items.splice(state.items.findIndex(x => x.id === action.id), 1);
   }
 
   // @Action(AddTodoToList)

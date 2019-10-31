@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { AddToDoItem, ItemCreated, GetItems, ItemsFetched, SingleItemFetched,
-  GetItemsByListId, EditToDoItem, ItemEdited } from './todos.actions';
+  GetItemsByListId, EditToDoItem, ItemEdited, RemoveToDoItem, ItemRemoved } from './todos.actions';
 import { TodoService } from '../services/todo.service';
 import { ToDoItem } from '../models/to-do-item';
 
@@ -38,6 +38,11 @@ export class TodosState {
         {id: action.toDoItem.id, isResolved: action.toDoItem.isResolved, ownerListId: action.toDoItem.ownerListId, ...action.changes}
       ).subscribe(x => ctx.dispatch(new ItemEdited(x)));
     }
+  }
+
+  @Action(RemoveToDoItem)
+  removeToDoItem(ctx: StateContext<TodosStateModel>, action: RemoveToDoItem) {
+    this.todoHttpSerivce.delete(action.id).subscribe(x => ctx.dispatch(new ItemRemoved(x)));
   }
 
   @Action(GetItems)
@@ -78,6 +83,13 @@ export class TodosState {
   itemEdited(ctx: StateContext<TodosStateModel>, action: ItemEdited) {
     const state = ctx.getState();
     state.items[state.items.findIndex(x => x.id === action.item.id)] = action.item;
+    ctx.setState({items: state.items});
+  }
+
+  @Action(ItemRemoved)
+  itemRemoved(ctx: StateContext<TodosStateModel>, action: ItemRemoved) {
+    const state = ctx.getState();
+    state.items.splice(state.items.findIndex(x => x.id === action.id), 1);
     ctx.setState({items: state.items});
   }
 }

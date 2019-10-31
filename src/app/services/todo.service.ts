@@ -42,9 +42,10 @@ export class TodoService implements HttpService<ToDoItem> {
     return of(item);
   }
 
-  // TODO: fill
   public delete(id: number) {
-    const x = id;
-    return of(x);
+    const currentState = this.backendMockUpService.itemCollection.getValue();
+    currentState.splice(currentState.findIndex(x => x.id === id), 1);
+    this.backendMockUpService.itemCollection.next(currentState);
+    return of(id);
   }
 }

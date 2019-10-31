@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Assignee } from '../../models/assignee';
+import { Store, Select } from '../../../../node_modules/@ngxs/store';
+import { UsersState } from '../../users-store/users.state';
+import { Observable } from '../../../../node_modules/rxjs';
 
 export interface TodoItemCreateEditDialogData {
   description: string;
@@ -20,7 +23,12 @@ export class CreateEditTodoDialogComponent implements OnInit {
   description: string;
   assignee: Assignee;
 
+  @Select(UsersState.users) users$: Observable<Assignee[]>;
+
+  assignees: Assignee[] = [];
+
   constructor(
+    public store: Store,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateEditTodoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TodoItemCreateEditDialogData) {
@@ -29,11 +37,18 @@ export class CreateEditTodoDialogComponent implements OnInit {
       this.assignee = data.assignee;
     }
 
+  getOptionText(option) {
+    if (option) {
+      return option.name;
+    }
+  }
+
   ngOnInit() {
+    this.users$.subscribe(x => this.assignees = x);
     this.form = this.fb.group({
         dueDate: [this.dueDate, [Validators.required, Validators.minLength(3)]],
         description: [this.description, [Validators.required, Validators.minLength(3)]],
-        assignee: [this.assignee, [Validators.required, Validators.minLength(3)]]
+        assignee: [this.assignee]
     });
   }
 
