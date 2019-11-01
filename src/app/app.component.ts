@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { GetLists } from './multi-list/multi-list-store/multi-list.actions';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +7,4 @@ import { GetLists } from './multi-list/multi-list-store/multi-list.actions';
 })
 export class AppComponent {
   title = 'InvestiereToDo';
-  constructor(public store: Store) {
-    this.store.dispatch(new GetLists());
-  }
 }

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MultiListComponent } from './multi-list/multi-list.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
+import { MultiListModule } from './multi-list/multi-list.module';
+
 
 const routes: Routes = [
-  { path: 'toDoLists', component: MultiListComponent },
-  { path: 'toDoList/:id', component: TodoListComponent},
+  // synchronous load, because its base module shared with others
+  { path: 'toDoLists', loadChildren: () => MultiListModule },
+  { path: 'toDoList/:id', loadChildren: () => import('./todo-list/todo-list.module').then(m => m.TodoListModule)},
   { path: '**', redirectTo: 'toDoLists', pathMatch: 'full'},
 ];
 

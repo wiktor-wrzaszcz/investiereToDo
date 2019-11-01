@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateNewListDialogComponent } from './create-new-list-dialog/create-new-list-dialog.component';
 import { MultiListState } from './multi-list-store/multi-list.state';
-import { CreateList } from './multi-list-store/multi-list.actions';
+import { CreateList, GetLists } from './multi-list-store/multi-list.actions';
 import { ToDoList } from '../shared/models/to-do-list';
 
 export interface MultiListCreateDialogData {
@@ -22,7 +22,7 @@ export class MultiListComponent {
   @Select(MultiListState) multiListState$: Observable<ToDoList[]>;
 
   constructor(private store: Store, public dialog: MatDialog) {
-    this.multiListState$.subscribe(x => console.log(x));
+    this.store.dispatch(new GetLists());
   }
 
   openDialog(): void {

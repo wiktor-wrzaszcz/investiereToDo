@@ -9,6 +9,7 @@ import { GetItemsByListId, AddToDoItem } from './todos-store/todos.actions';
 import { TodosState } from './todos-store/todos.state';
 import { ToDoList } from '../shared/models/to-do-list';
 import { ToDoItem } from '../shared/models/to-do-item';
+import { GetLists } from '../multi-list/multi-list-store/multi-list.actions';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -22,6 +23,7 @@ export class TodoListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private store: Store, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.store.dispatch(new GetLists());
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.store.select(MultiListState.getIndexed).pipe(
       map(filterFn => filterFn(id)),
