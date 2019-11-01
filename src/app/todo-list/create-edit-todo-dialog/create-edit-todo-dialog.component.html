@@ -1,5 +1,12 @@
 <h1 mat-dialog-title>Create new TODO</h1>
 <div mat-dialog-content [formGroup]="form">
+    <p>Description</p>
+    <mat-form-field>
+      <input matInput formControlName="description">
+    </mat-form-field>
+    <div *ngIf="form.controls['description'].errors" class="error-text">
+      Provide at least 3 characters
+    </div>
     <p>Assignee</p>
     <mat-form-field >
       <input matInput [matAutocomplete]="auto" formControlName="assignee">    
@@ -10,13 +17,6 @@
           </mat-autocomplete>
     </mat-form-field>
     <div *ngIf="form.controls['assignee'].errors" class="error-text">
-      Provide at least 3 characters
-    </div>
-    <p>Description</p>
-    <mat-form-field>
-      <input matInput formControlName="description">
-    </mat-form-field>
-    <div *ngIf="form.controls['description'].errors" class="error-text">
       Provide at least 3 characters
     </div>
     <p>DueDate</p>
