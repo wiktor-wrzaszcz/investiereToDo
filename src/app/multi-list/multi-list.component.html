@@ -8,6 +8,7 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>   
+    <div *ngIf="(multiListState$ | async).items.count === 0">Add TODO's with big red button.</div>
     <app-list-card *ngFor="let toDoList of (multiListState$ | async).items" [toDoList]="toDoList"></app-list-card>
   </mat-sidenav-content>
 </mat-sidenav-container>

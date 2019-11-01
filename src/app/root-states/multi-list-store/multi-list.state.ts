@@ -49,6 +49,6 @@ export class MultiListState {
 
   @Action(ListsFetched)
   listsFetched(ctx: StateContext<MultiListStateModel>, action: ListsFetched) {
-    ctx.setState({ items: action.payload });
+    ctx.setState({ items: [...action.payload] });
   }
 }

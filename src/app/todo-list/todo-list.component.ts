@@ -4,12 +4,13 @@ import { Store } from '@ngxs/store';
 import { map, debounceTime } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { CreateEditTodoDialogComponent, TodoItemCreateEditDialogData } from './create-edit-todo-dialog/create-edit-todo-dialog.component';
-import { MultiListState } from '../multi-list/multi-list-store/multi-list.state';
 import { GetItemsByListId, AddToDoItem } from './todos-store/todos.actions';
 import { TodosState } from './todos-store/todos.state';
 import { ToDoList } from '../shared/models/to-do-list';
 import { ToDoItem } from '../shared/models/to-do-item';
-import { GetLists } from '../multi-list/multi-list-store/multi-list.actions';
+import { GetLists } from '../root-states/multi-list-store/multi-list.actions';
+import { GetUsers } from '../root-states/users-store/users.actions';
+import { MultiListState } from '../root-states/multi-list-store/multi-list.state';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -24,6 +25,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new GetLists());
+    this.store.dispatch(new GetUsers());
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.store.select(MultiListState.getIndexed).pipe(
       map(filterFn => filterFn(id)),

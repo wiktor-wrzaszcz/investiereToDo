@@ -3,9 +3,9 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateNewListDialogComponent } from './create-new-list-dialog/create-new-list-dialog.component';
-import { MultiListState } from './multi-list-store/multi-list.state';
-import { CreateList, GetLists } from './multi-list-store/multi-list.actions';
 import { ToDoList } from '../shared/models/to-do-list';
+import { MultiListState } from '../root-states/multi-list-store/multi-list.state';
+import { CreateList } from '../root-states/multi-list-store/multi-list.actions';
 
 export interface MultiListCreateDialogData {
   name: string;
@@ -22,7 +22,6 @@ export class MultiListComponent {
   @Select(MultiListState) multiListState$: Observable<ToDoList[]>;
 
   constructor(private store: Store, public dialog: MatDialog) {
-    this.store.dispatch(new GetLists());
   }
 
   openDialog(): void {

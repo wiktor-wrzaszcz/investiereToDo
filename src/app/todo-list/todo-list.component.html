@@ -14,10 +14,10 @@
       <mat-icon>add</mat-icon>
     </button>    
   </div>   
-
+  
   <mat-list *ngIf="todos">  
     <app-todo-card *ngFor="let item of todos" [toDoItem]="item"></app-todo-card>
   </mat-list>
 
-  <div *ngIf="!todos"><span>Add new TODOs</span></div>
+  <div *ngIf="(todos == null || todos.length === 0)"><span>Add new TODOs by pressing big red button.</span></div>
 </div>

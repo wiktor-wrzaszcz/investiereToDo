@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ToDoList } from '../models/to-do-list';
 import { HttpService } from './http-service.interface';
 import { Observable, of } from 'rxjs';
-import { EditCreateListData } from '../../multi-list/multi-list-store/models/edit-create-list-data';
 import { BackendMockUpService } from '../../backend-mock-up.service';
+import { EditCreateListData } from '../../root-states/multi-list-store/models/edit-create-list-data';
 
 @Injectable({
   providedIn: 'root'

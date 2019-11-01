@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { GetUsers } from './users.actions';
-import { Assignee } from '../shared/models/assignee';
+import { Assignee } from '../../shared/models/assignee';
 
 export class UsersStateModel {
   public items: Assignee[];

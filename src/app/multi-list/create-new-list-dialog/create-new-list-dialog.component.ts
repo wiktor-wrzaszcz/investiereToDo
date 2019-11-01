@@ -21,7 +21,6 @@ export class CreateNewListDialogComponent implements OnInit {
       this.name = data.name;
     }
 
-      
   ngOnInit() {
     this.form = this.fb.group({
         name: [this.name, [Validators.required, Validators.minLength(3)]],
