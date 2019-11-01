@@ -1,15 +1,26 @@
+:host {
+  flex: 1;
+}
+
 .card-container {
   margin: 5px;
   display: flex;
-}
-
-.button-right {  
-  position: absolute;
-  right: 12px;
 }
 
 .checkbox-right-bot {
   position: absolute;
   right: 10px;
   bottom: 20px;
+}
+
+.card-header{
+  flex: 1;
+  justify-content: space-between;
+}
+
+::ng-deep .mat-card-header-text {  
+  max-width: 80%;  
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  flex: 1;
 }

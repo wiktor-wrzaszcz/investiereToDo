@@ -1,5 +1,5 @@
 <mat-card class="card-container">    
-    <mat-card-header>
+    <mat-card-header class="card-header">
       <mat-card-title>Title: {{toDoItem.description}}
       </mat-card-title>
       <mat-card-title>Due date: {{toDoItem.dueDate | date }}
@@ -8,10 +8,9 @@
         <app-assignee *ngIf="toDoItem.assignee" [assignee]="toDoItem.assignee"></app-assignee> 
         <span *ngIf="!toDoItem.assignee">Nobody assigned :(</span> 
       </mat-card-title> 
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu" class="button-right">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
         <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-checkbox [(ngModel)]="checked" (ngModelChange)="onCheckboxChange($event)" class="checkbox-right-bot" [labelPosition]="'before'">Is Done?</mat-checkbox>
+      </button>      
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="edit()">
           <mat-icon>build</mat-icon>

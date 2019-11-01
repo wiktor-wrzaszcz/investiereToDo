@@ -15,9 +15,36 @@
     </button>    
   </div>   
   
-  <mat-list *ngIf="todos">  
-    <app-todo-card *ngFor="let item of todos" [toDoItem]="item"></app-todo-card>
-  </mat-list>
-
+  <div class="flex-display">
+    <div class="drop-container">
+      <h2>To do</h2>
+    
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="drop-list"
+        (cdkDropListDropped)="drop($event)">
+        <span *ngIf="!todo || todo.length === 0">Nothing left to do! Enjoy!</span>
+        <app-todo-card *ngFor="let item of todo" cdkDrag [toDoItem]="item"></app-todo-card>
+      </div>
+    </div>
+    
+    <div class="drop-container">
+      <h2>Done</h2>
+    
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="drop-list"
+        (cdkDropListDropped)="drop($event)">
+        <span *ngIf="!done || done.length === 0">Start working!</span>
+        <app-todo-card *ngFor="let item of done" [toDoItem]="item" cdkDrag></app-todo-card>
+      </div>
+    </div>
+  </div>
   <div *ngIf="(todos == null || todos.length === 0)"><span>Add new TODOs by pressing big red button.</span></div>
 </div>
