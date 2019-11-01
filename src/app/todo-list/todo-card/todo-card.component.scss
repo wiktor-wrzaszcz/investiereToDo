@@ -16,6 +16,7 @@
 .card-header{
   flex: 1;
   justify-content: space-between;
+  max-width: 100%;
 }
 
 ::ng-deep .mat-card-header-text {  
@@ -23,4 +24,5 @@
   text-overflow: ellipsis;
   overflow-wrap: break-word;
   flex: 1;
+  margin: 0px !important;
 }
