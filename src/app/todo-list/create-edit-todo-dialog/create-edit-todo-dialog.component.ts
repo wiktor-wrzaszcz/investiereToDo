@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Store, Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Assignee } from '../../shared/models/assignee';
 import { UsersState } from '../../root-states/users-store/users.state';
+import { takeUntil } from '../../../../node_modules/rxjs/operators';
 
 export interface TodoItemCreateEditDialogData {
   description: string;
@@ -17,11 +18,13 @@ export interface TodoItemCreateEditDialogData {
   templateUrl: './create-edit-todo-dialog.component.html',
   styleUrls: ['./create-edit-todo-dialog.component.scss']
 })
-export class CreateEditTodoDialogComponent implements OnInit {
+export class CreateEditTodoDialogComponent implements OnInit, OnDestroy {
   form: FormGroup;
   dueDate: Date;
   description: string;
   assignee: Assignee;
+
+  unsubscribe$ = new Subject<boolean>();
 
   @Select(UsersState.users) users$: Observable<Assignee[]>;
 
@@ -44,7 +47,7 @@ export class CreateEditTodoDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users$.subscribe(x => this.assignees = x);
+    this.users$.pipe(takeUntil(this.unsubscribe$)).subscribe(x => this.assignees = x);
     this.form = this.fb.group({
         dueDate: [this.dueDate, [Validators.required, Validators.minLength(3)]],
         description: [this.description, [Validators.required, Validators.minLength(3)]],
@@ -59,5 +62,10 @@ export class CreateEditTodoDialogComponent implements OnInit {
   save(): void {
     console.log(this.form.valid);
     this.dialogRef.close(this.form.value);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }
